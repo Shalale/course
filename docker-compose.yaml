@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  mysql:
+    hostname: mysql-hostname
+    image: mysql
+    container_name: mysql
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    networks:
+      - ms_network
+
+  adminer:
+    image: adminer
+    restart: always
+    container_name: mysql-adminer
+    ports:
+      - "8080:8080"
+
+  course:
+    image: course-app:1.0
+    container_name: course
+    ports:
+      - "9090:9090"
+    environment:
+      DB_CONNECTION_IP: "mysql-hostname"
+    networks:
+      - ms_network
+    depends_on:
+      - mysql
+
+
+networks:
+  ms_network:
+volumes:
+  db-data:
