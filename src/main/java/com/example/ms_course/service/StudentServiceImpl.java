@@ -7,12 +7,21 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository repository;
+
+    @Override
+    public List<Student> getAllStudents() {
+
+        return new ArrayList<Student>(repository.findAll());
+    }
 
     @Override
     public Student getById(Long id) {
