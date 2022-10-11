@@ -12,30 +12,27 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
     private final StudentService service;
 
-//    @GetMapping("/{id}")
-//    public StudentDto getStudentById(@PathVariable Long id){
-//        return service.getById(id);
-//    }
-    @GetMapping
-    public String getStudentById(){
-        return "Salam Millet";
+    @GetMapping("/{id}")
+    public StudentDto getStudentById(@PathVariable Long id){
+        return service.getById(id);
     }
-//
-//    @PostMapping
-//    public StudentDto createStudent(@RequestBody StudentDto dto){
-//        return service.createStudent(dto);
-//    }
-//
-//    @PutMapping("/{id}")
-//    public StudentDto updateStudent(@PathVariable Long id, @RequestBody StudentDto dto){
-//        return service.updateStudent(id, dto);
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public void deleteStudent(@PathVariable Long id){
-//        service.deleteStudent(id);
-//    }
-//
+
+
+    @PostMapping
+    public StudentDto createStudent(@RequestBody StudentDto dto){
+        return service.createStudent(dto);
+    }
+
+    @PutMapping("/{id}")
+    public StudentDto updateStudent(@PathVariable Long id, @RequestBody StudentDto dto){
+        return service.updateStudent(id, dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteStudent(@PathVariable Long id){
+        service.deleteStudent(id);
+    }
+
 
 
 

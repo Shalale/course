@@ -14,7 +14,7 @@ services:
       - ms_network
 
   course:
-    image: ms-course:2.0
+    image: course:4.0
     container_name: course
     ports:
       - "9090:9090"
