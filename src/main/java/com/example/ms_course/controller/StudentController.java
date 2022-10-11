@@ -10,12 +10,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService service;
     private final ModelMapper mapper;
+
+    @GetMapping
+    public List<Student> getAllStudents(){
+        return service.getAllStudents();
+    }
 
     @GetMapping("/{id}")
     public StudentDto getStudentById(@PathVariable Long id){
