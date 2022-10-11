@@ -13,15 +13,8 @@ services:
     networks:
       - ms_network
 
-  adminer:
-    image: adminer
-    restart: always
-    container_name: mysql-adminer
-    ports:
-      - "8080:8080"
-
   course:
-    image: course-app:1.0
+    image: ms-course:2.0
     container_name: course
     ports:
       - "9090:9090"
