@@ -10,18 +10,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/students")
+@RequestMapping("api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
     private final StudentService service;
     private final ModelMapper mapper;
 
     @GetMapping
-    public List<Student> getAllStudents(){
-        return service.getAllStudents();
+    public List<StudentDto> getAllStudents(){
+        return service.getAllStudents().stream().map(post -> mapper.map(post, StudentDto.class))
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
