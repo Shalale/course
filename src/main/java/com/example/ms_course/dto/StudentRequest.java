@@ -1,11 +1,9 @@
 package com.example.ms_course.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-public class StudentDto {
+public class StudentRequest {
     private Long id;
     private String name;
     private String surname;

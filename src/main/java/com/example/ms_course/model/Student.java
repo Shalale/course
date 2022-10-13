@@ -1,7 +1,6 @@
 package com.example.ms_course.model;
 
 import lombok.Data;
-import lombok.Generated;
 
 import javax.persistence.*;
 

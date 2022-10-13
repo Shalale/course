@@ -1,6 +1,7 @@
 package com.example.ms_course.service;
 
-import com.example.ms_course.dto.StudentDto;
+import com.example.ms_course.dto.StudentRequest;
+import com.example.ms_course.dto.StudentResponse;
 import com.example.ms_course.model.Student;
 
 import java.util.List;
@@ -8,12 +9,14 @@ import java.util.List;
 
 public interface StudentService {
 
-    List<Student> getAllStudents();
-    Student getById(Long id);
+    List<StudentResponse> getAllStudents();
+    StudentResponse getById(Long id);
 
-    Student createStudent(Student student);
+    List<StudentResponse> findByName(String name);
 
-    Student updateStudent(Long id, Student student);
+    StudentResponse createStudent(StudentRequest request);
+
+    StudentResponse updateStudent(Long id, StudentRequest request);
 
     void deleteStudent(Long id);
 }
