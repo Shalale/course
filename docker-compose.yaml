@@ -1,29 +1,31 @@
 version: '3.8'
 services:
-  mysql:
-    hostname: mysql-hostname
-    image: mysql
-    container_name: mysql
+  database:
+    hostname: postgres-hostname
+    image: postgres
+    container_name: postgresql
     volumes:
-      - db-data:/var/lib/mysql
+      - db-data:/var/lib/postgresql
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: student-database
     ports:
-      - "3306:3306"
+      - "5432:5432"
     networks:
       - ms_network
 
-  course:
-    image: course:5.0
-    container_name: course
-    ports:
-      - "9090:9090"
-    environment:
-      DB_CONNECTION_IP: "mysql-hostname"
-    networks:
-      - ms_network
-    depends_on:
-      - mysql
+#  course:
+#    image: course:5.0
+#    container_name: course
+#    ports:
+#      - "9090:9090"
+#    environment:
+#      DB_CONNECTION_IP: "mysql-hostname"
+#    networks:
+#      - ms_network
+#    depends_on:
+#      - mysql
 
 
 networks:
